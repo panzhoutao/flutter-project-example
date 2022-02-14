@@ -1,0 +1,48 @@
+name: flutter_project_example
+description: flutter工程模板
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  device_preview: ^1.0.0
+  provider: ^6.0.1
+  bot_toast: ^4.0.1
+  logger: ^1.1.0
+  event_bus: ^2.0.0
+  flutter_screenutil: 5.2.0
+  flutter_keyboard_visibility: ^5.1.0
+  dio: ^4.0.4
+  flutter_utils_code:
+    git:
+      url: https://github.com/panzhoutao/flutter_utils_code.git
+      ref: 0.0.9
+#    path: ../../flutter_utils_code
+  dio_log: ^2.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+   - res/images/
+   - res/logo/
+
+flutter_intl:
+  enabled: true
