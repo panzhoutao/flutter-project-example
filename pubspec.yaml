@@ -29,6 +29,7 @@ dependencies:
       ref: 0.0.9
 #    path: ../../flutter_utils_code
   dio_log: ^2.0.2
+  shared_preferences: ^2.0.13
 
 dev_dependencies:
   flutter_test:
