@@ -2,12 +2,12 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 import 'example.dart';
 import 'global.dart';
-import 'pages/debug/overlay_debuger.dart';
-import 'states/locale_model.dart';
-import 'states/user_model.dart';
+import 'l10n/messages.dart';
 import 'widget/style/theme_data.dart';
+import 'dart:ui' as ui;
 
 void main() {
   Global.instance.init().then(
@@ -15,21 +15,12 @@ void main() {
       return runApp(
         DevicePreview(
           enabled: !kReleaseMode,
-          builder: (context) => myApp, // Wrap your app
+          builder: (context) => MyApp(), // Wrap your app
         ),
       );
     },
   );
 }
-
-///
-Widget myApp = MultiProvider(
-  providers: [
-    ChangeNotifierProvider(create: (context) => UserModel()),
-    ChangeNotifierProvider(create: (context) => LocaleModel()),
-  ],
-  child: MyApp(),
-);
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
@@ -38,7 +29,6 @@ class MyApp extends StatelessWidget {
 
   ///
   Iterable<LocalizationsDelegate<dynamic>> get _localizationsDelegates => [
-        S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
@@ -49,36 +39,27 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       builder: () {
-        return Consumer<LocaleModel>(
-          builder: (BuildContext context, currentLocale, Widget? child) {
-            return MaterialApp(
-              navigatorKey: rootNavigatorKey,
-              useInheritedMediaQuery: true,
-              builder: (context, child) {
-                ScreenUtil.setContext(context);
-                child = botToastBuilder(context, child);
-                child = DevicePreview.appBuilder(context, child);
-                return child;
-              },
-              navigatorObservers: [BotToastNavigatorObserver()],
-              title: 'example',
-              onGenerateTitle: (context) {
-                return S().app_name;
-              },
-              initialRoute: RoutersManager.welcome,
-              onGenerateRoute: RoutersManager.generator,
-              theme: MyThemeData.instance.themeData(),
-              localizationsDelegates: _localizationsDelegates,
-              supportedLocales: S.delegate.supportedLocales,
-              locale: currentLocale.locale,
-              localeResolutionCallback: (
-                Locale? locale,
-                Iterable<Locale> supportedLocales,
-              ) {
-                return locale;
-              },
-            );
+        return GetMaterialApp(
+          navigatorKey: rootNavigatorKey,
+          useInheritedMediaQuery: true,
+          builder: (context, child) {
+            ScreenUtil.setContext(context);
+            child = botToastBuilder(context, child);
+            child = DevicePreview.appBuilder(context, child);
+            return child;
           },
+          navigatorObservers: [BotToastNavigatorObserver()],
+          title: 'example',
+          onGenerateTitle: (context) {
+            return 'example';
+          },
+          getPages: RoutersManager.routers,
+          initialRoute: RoutersManager.welcome,
+          theme: MyThemeData.instance.themeData(),
+          localizationsDelegates: _localizationsDelegates,
+          translations: Messages(),
+          locale: ui.window.locale,
+          fallbackLocale: const Locale('en', 'US'),
         );
       },
     );

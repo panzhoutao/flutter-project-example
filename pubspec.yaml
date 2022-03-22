@@ -16,11 +16,11 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   device_preview: ^1.0.0
-  provider: ^6.0.1
+  get: ^4.6.1
   bot_toast: ^4.0.1
   logger: ^1.1.0
   event_bus: ^2.0.0
-  flutter_screenutil: 5.2.0
+  flutter_screenutil: 5.3.1
   flutter_keyboard_visibility: ^5.1.0
   dio: ^4.0.4
   flutter_utils_code:
@@ -44,6 +44,3 @@ flutter:
   assets:
    - res/images/
    - res/logo/
-
-flutter_intl:
-  enabled: true

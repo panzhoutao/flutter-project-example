@@ -1,9 +1,9 @@
-import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 
 ///@Description:
 ///@Author:         @Mr.pan
 ///@CreateDate:
-class UserModel extends ChangeNotifier {
+class UserModel extends GetxController {
   ///
   dynamic _user;
 
@@ -11,6 +11,6 @@ class UserModel extends ChangeNotifier {
 
   set user(dynamic user) {
     _user = user;
-    notifyListeners();
+    update();
   }
 }
