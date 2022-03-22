@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project_example/states/user_model.dart';
+import 'package:get/get.dart';
 import 'utils/log_util.dart';
 import 'utils/sp_utils.dart';
 
@@ -22,6 +24,9 @@ class Global {
   }
 
   Global._internal();
+
+  ///
+  UserModel userModel = Get.put(UserModel());
 
   ///
   Future<void> init() async {

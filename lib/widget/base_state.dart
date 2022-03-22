@@ -116,6 +116,4 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
     );
   }
 
-  ///
-  UserModel get userModel => context.read<UserModel>();
 }
