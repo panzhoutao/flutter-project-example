@@ -1,7 +1,6 @@
-import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:flutter_utils_code/flutter_utils_code.dart';
-import 'package:dio_log/interceptor/dio_log_interceptor.dart';
 import '../../entitys/response_entity.dart';
 import '../../generated/json/base/json_convert_content.dart';
 import '../../utils/login_utils.dart';
@@ -23,8 +22,8 @@ enum HttpMethod {
 ///
 ///
 class NetService {
-  static const int CONNECT_TIMEOUT = 20000;
-  static const int RECEIVE_TIMEOUT = 20000;
+  static const Duration CONNECT_TIMEOUT = Duration(seconds: 20);
+  static const Duration RECEIVE_TIMEOUT = Duration(seconds: 20);
 
   factory NetService() => _getInstance();
 
@@ -53,13 +52,14 @@ class NetService {
       baseUrl: Api.baseUrl,
     );
 
-    _dio.interceptors.add(DioLogInterceptor());
+    // _dio.interceptors.add(DioLogInterceptor());
     _dio.interceptors.add(OnReqResInterceptors());
   }
 
   ///set proxy
   void setProxy(String httpProxyIp) {
-    (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    HttpClientAdapter;
+    (_dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
         (client) {
       client.findProxy = (uri) {
         return httpProxyIp.isEmptyOrNull()
@@ -113,15 +113,16 @@ class NetService {
       ResponseEntity baseModel = ResponseEntity.fromJson(response.data);
       if (!baseModel.msgCode.isEmptyOrNull()) {
         //E9010未注册
-        if(baseModel.msgCode == 'E9010' || baseModel.msgCode == 'E9006') {
+        if (baseModel.msgCode == 'E9010' || baseModel.msgCode == 'E9006') {
           return baseModel;
-        } else if(baseModel.msgCode == 'E9000' || baseModel.msgCode == 'E9004') {
+        } else if (baseModel.msgCode == 'E9000' ||
+            baseModel.msgCode == 'E9004') {
           LoginUtils.loginOut();
           return;
         }
       }
 
-      if (baseModel.code == 0 ) {
+      if (baseModel.code == 0) {
         if (baseModel.data == null) {
           return true;
         } else if (baseModel.data is String) {
@@ -141,5 +142,4 @@ class NetService {
       }
     }
   }
-
 }

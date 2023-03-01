@@ -1,4 +1,3 @@
-import 'package:dio_log/http_log_list_widget.dart';
 import 'package:flutter/material.dart';
 
 class TestPage extends StatefulWidget {
@@ -12,19 +11,19 @@ class _TestPageState extends State<TestPage> {
   List<Widget> get children {
     List<Widget> views = [];
 
-    views.add(
-      ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => HttpLogListWidget(),
-            ),
-          );
-        },
-        child: const Text('http log'),
-      ),
-    );
+    // views.add(
+    //   ElevatedButton(
+    //     onPressed: () {
+    //       Navigator.push(
+    //         context,
+    //         MaterialPageRoute(
+    //           builder: (context) => HttpLogListWidget(),
+    //         ),
+    //       );
+    //     },
+    //     child: const Text('http log'),
+    //   ),
+    // );
 
     return views;
   }

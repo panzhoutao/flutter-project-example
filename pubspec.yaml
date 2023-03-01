@@ -14,28 +14,28 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
-  device_preview: ^1.0.0
-  get: ^4.6.1
-  bot_toast: ^4.0.1
-  logger: ^1.1.0
+  cupertino_icons: 1.0.5
+  device_preview: 1.1.0
+  provider: 6.0.5
+  bot_toast: 4.0.3
+  logger: 1.2.2
   event_bus: ^2.0.0
-  flutter_screenutil: 5.3.1
-  flutter_keyboard_visibility: ^5.1.0
-  dio: ^4.0.4
+  flutter_screenutil: 5.6.1
+  flutter_keyboard_visibility: 5.4.0
+  dio: 5.0.1
   flutter_utils_code:
     git:
       url: https://github.com/panzhoutao/flutter_utils_code.git
       ref: 0.0.9
 #    path: ../../flutter_utils_code
-  dio_log: ^2.0.2
-  shared_preferences: ^2.0.13
+#  dio_log: 2.0.4
+  get: 4.6.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^1.0.0
+  flutter_lints: 2.0.1
 
 flutter:
 
@@ -44,3 +44,6 @@ flutter:
   assets:
    - res/images/
    - res/logo/
+
+flutter_intl:
+  enabled: true

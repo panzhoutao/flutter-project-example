@@ -38,12 +38,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-      builder: () {
+      builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
           navigatorKey: rootNavigatorKey,
           useInheritedMediaQuery: true,
           builder: (context, child) {
-            ScreenUtil.setContext(context);
             child = botToastBuilder(context, child);
             child = DevicePreview.appBuilder(context, child);
             return child;
