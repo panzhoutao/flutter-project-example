@@ -48,7 +48,6 @@ class MyThemeData {
       appBarTheme: _appBarTheme,
       elevatedButtonTheme: _elevatedButtonTheme,
       textButtonTheme: _textButtonThemeData,
-      backgroundColor: systemGray6Light,
       dividerTheme: _dividerThemeData,
     );
   }

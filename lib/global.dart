@@ -30,7 +30,6 @@ class Global {
 
   ///
   Future<void> init() async {
-    WidgetsFlutterBinding.ensureInitialized();
     await SPUtils.instance.initSharePre();
     Log.i('Global init');
   }

@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context , designSize: const Size(960, 540));
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       builder: () {
@@ -55,10 +56,10 @@ class MyApp extends StatelessWidget {
           },
           getPages: RoutersManager.routers,
           initialRoute: RoutersManager.welcome,
-          theme: MyThemeData.instance.themeData(),
+          // theme: MyThemeData.instance.themeData(),
           localizationsDelegates: _localizationsDelegates,
           translations: Messages(),
-          locale: ui.window.locale,
+          // locale: ui.window.locale,
           fallbackLocale: const Locale('en', 'US'),
         );
       },

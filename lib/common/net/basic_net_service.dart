@@ -1,7 +1,7 @@
-import 'package:dio/adapter.dart';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_utils_code/flutter_utils_code.dart';
-import 'package:dio_log/interceptor/dio_log_interceptor.dart';
+
 import '../../entitys/response_entity.dart';
 import '../../generated/json/base/json_convert_content.dart';
 import '../../utils/login_utils.dart';
@@ -47,26 +47,26 @@ class NetService {
   ///
   void init() {
     _dio.options = BaseOptions(
-      connectTimeout: CONNECT_TIMEOUT,
-      receiveTimeout: RECEIVE_TIMEOUT,
+      // connectTimeout: CONNECT_TIMEOUT,
+      // receiveTimeout: RECEIVE_TIMEOUT,
       responseType: ResponseType.json,
       baseUrl: Api.baseUrl,
     );
 
-    _dio.interceptors.add(DioLogInterceptor());
+    // _dio.interceptors.add(DioLogInterceptor());
     _dio.interceptors.add(OnReqResInterceptors());
   }
 
   ///set proxy
   void setProxy(String httpProxyIp) {
-    (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-        (client) {
-      client.findProxy = (uri) {
-        return httpProxyIp.isEmptyOrNull()
-            ? 'DIRECT'
-            : 'PROXY $httpProxyIp:8888';
-      };
-    };
+    // (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    //     (client) {
+    //   client.findProxy = (uri) {
+    //     return httpProxyIp.isEmptyOrNull()
+    //         ? 'DIRECT'
+    //         : 'PROXY $httpProxyIp:8888';
+    //   };
+    // };
   }
 
   /// Example:
